@@ -1,5 +1,5 @@
 ## dynamic-route
-通用动态理由服务，基于**spring cloud zuul**实现  
+通用动态理由服务，基于**spring cloud zuul**实现  
 [博客地址](https://my.oschina.net/u/2402525/blog/1581210)
 
 ### 路径表达式
