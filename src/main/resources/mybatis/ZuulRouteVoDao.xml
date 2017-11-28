@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dynamic.route.dao.ZuulRouteVoDao">
+
+    <resultMap id="AllColumnMap" type="com.dynamic.route.vo.ZuulRouteVo">
+        <id column="id" property="id" javaType="java.lang.String"></id>
+        <result column="path" property="path"/>
+        <result column="host" property="host"/>
+        <result column="url" property="url"/>
+    </resultMap>
+
+    <sql id="all_column">
+        `path`,
+        `host`,
+        `url`
+    </sql>
+
+    <insert id="insert">
+        INSERT INTO dynamic_route (
+            `path`,
+            `host`,
+            `url`
+        ) VALUES (
+            #{pojo.path},
+            #{pojo.host},
+            #{pojo.url}
+        )
+    </insert>
+
+    <insert id="insertSelective" >
+        INSERT INTO dynamic_route
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.path!=null"> `path`,</if>
+            <if test="pojo.host!=null"> `host`,</if>
+            <if test="pojo.url!=null"> `url`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.path!=null">#{pojo.path},</if>
+            <if test="pojo.host!=null">#{pojo.host},</if>
+            <if test="pojo.url!=null">#{pojo.url},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO dynamic_route (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.path},
+            #{pojo.host},
+            #{pojo.url}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateStatusById">
+        UPDATE dynamic_route
+        set is_read = 0
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryAll" resultMap="AllColumnMap">
+      SELECT CONCAT(id, '') as id, host, path from dynamic_route where is_read = 1 ORDER BY path DESC
+    </select>
+</mapper>
+

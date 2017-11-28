@@ -1,0 +1,8 @@
+CREATE TABLE `dynamic_route` (
+   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+   `host` varchar(100) NOT NULL,
+   `path` varchar(256) NOT NULL,
+   `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1:路由 0：不路由',
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `idx_path` (`path`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8

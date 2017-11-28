@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  UTIEncoding: UTF-8
+
+spring:
+  application:
+    name: Local dynamic route
+
+  datasource:
+    name: ebtcedev
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dynamic_route?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    username: root22222
+    password: 123456
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x' from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+# zuul
+zuul:
+  host:
+    socket-timeout-millis: 150000
+    connect-timeout-millis: 150000
+    max-total-connections: 200
+    max-per-route-connections: 100
+
+ribbon:
+  eureka:
+    enabled: false
+
+# logging
+logging:
+  path: /opt/log/dynamic_route/
+  file: route.log
+  level:
+    root: info
+
+ebtce:
+  routeRefresh: 15
