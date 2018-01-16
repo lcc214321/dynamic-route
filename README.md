@@ -21,5 +21,5 @@ sql脚本文件路径：classpath/sql.txt
 服务启动类：DynamicRouteApplication  
 
 ### 说明
-重启服务或者更新路由信息请重置路由信息读取标志状态  
+重启服务or添加、更新路由信息请重置路由信息读取标志状态
 ``UPDATE dynamic_route SET is_read = 1``
