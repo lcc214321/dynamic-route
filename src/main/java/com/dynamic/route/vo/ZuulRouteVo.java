@@ -8,7 +8,7 @@ public class ZuulRouteVo {
     private String id;
     private String path;
     private String host;
-    private boolean stripPrefix = true;
+    private boolean stripPrefix = false;
     private boolean customSensitiveHeaders = false;
     private String url;
 
